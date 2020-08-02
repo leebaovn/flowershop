@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import './index.css';
+import { Client as Styletron } from 'styletron-engine-atomic';
+import { Provider as StyletronProvider } from 'styletron-react';
+import { LightTheme, BaseProvider, styled } from 'baseui';
+import Head from './components/Header'
+
+const Container = styled('div', {
+  width: "100%",
+  maxWidth: "1200px",
+  margin: "auto"
+})
+
+const engine = new Styletron();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <StyletronProvider value={engine}>
+      <BaseProvider theme={LightTheme}>
+        <Container>
+          <Head>
+
+          </Head>
+        </Container>
+      </BaseProvider>
+    </StyletronProvider>)
 }
 
 export default App;
